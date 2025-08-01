@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
+
 const Dashboard = () => {
+const navigate = useNavigate();
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold">Welcome to your Dashboard!</h1>
@@ -11,6 +16,13 @@ const Dashboard = () => {
       >
         Logout
       </button>
+        <button
+    onClick={() => navigate("/profile")}
+    className="text-blue-600 underline"
+  >
+    Profile
+  </button>
+
     </div>
   );
 };

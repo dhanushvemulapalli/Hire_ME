@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import WalletConnect from "../components/WalletConnect";
 
 
 const Signup = () => {
@@ -29,6 +30,8 @@ const navigate = useNavigate();
 
       if (res.ok) {
         alert("Signup successful!");
+        navigate("/login");
+
       } else {
         alert(data.msg || "Signup failed");
       }
@@ -81,6 +84,12 @@ const navigate = useNavigate();
   >
     Log In
   </button>
+  <WalletConnect
+  onWalletConnected={(walletAddress) =>
+    setFormData({ ...formData, wallet: walletAddress })
+  }
+/>
+
 </p>
 
     </div>

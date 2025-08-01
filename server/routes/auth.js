@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/user");
+const User = require("../models/User");
 
 const router = express.Router();
 
@@ -16,6 +16,7 @@ router.post("/signup", async (req, res) => {
     if (userExists) {
       console.log("User already exists");
       return res.status(400).json({ msg: "User already exists" });
+      
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,7 +37,6 @@ router.post("/signup", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 // Login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
